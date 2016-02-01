@@ -130,11 +130,14 @@ static func simplex2(c0, c1):
 	var f2 = 0.5 - p02*p02 - p12*p12
 	
 	if f0 > 0:
-		n0 = f0*f0*f0*f0 * (GRAD3[g0]*p00 + GRAD3[g0]*p10)
+		#n0 = f0*f0*f0*f0 * (GRAD3[g0]*p00 + GRAD3[g0]*p10)
+		n0 = f0*f0*f0*f0 * (GRAD3[g0]*p00 + GRAD3[g0 + 1]*p10)
 	if f1 > 0:
-		n1 = f1*f1*f1*f1 * (GRAD3[g1 + 1]*p01 + GRAD3[g1 + 1]*p11)
+		#n1 = f1*f1*f1*f1 * (GRAD3[g1 + 1]*p01 + GRAD3[g1 + 1]*p11)
+		n1 = f1*f1*f1*f1 * (GRAD3[g1]*p01 + GRAD3[g1 + 1]*p11)
 	if f2 > 0:
-		n2 = f2*f2*f2*f2 * (GRAD3[g2 + 2]*p02 + GRAD3[g2 + 2]*p12)
+		#n2 = f2*f2*f2*f2 * (GRAD3[g2 + 2]*p02 + GRAD3[g2 + 2]*p12)
+		n2 = f2*f2*f2*f2 * (GRAD3[g2]*p02 + GRAD3[g2 + 1]*p12)
 	
 	return (n0 + n1 + n2) * 70.0
 
